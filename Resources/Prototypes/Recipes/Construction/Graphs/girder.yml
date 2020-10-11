@@ -6,7 +6,7 @@
       edges:
         - to: girder
           completed:
-            - !type:SnapToGrid { }
+            - !type:SnapToGrid {}
           steps:
             - material: Metal
               amount: 2
@@ -44,11 +44,24 @@
 
         - to: reinforcedGirder
           completed:
-            - !type:SnapToGrid { }
+            - !type:SnapToGrid {}
           conditions:
             - !type:EntityAnchored {}
           steps:
             - material: Plasteel
+              amount: 1
+
+        - to: hiddenDoor
+          completed:
+            - !type:SnapToGrid {}
+          conditions:
+            - !type:EntityAnchored
+              anchored: true
+          steps:
+            - tool: Anchoring
+              doafter: 2
+              #TODO: figure out what's wrong with this step, it doesn't work RN
+            - material: Metal
               amount: 2
 
     - node: wall
@@ -72,19 +85,29 @@
       edges:
         - to: reinforcedWall
           completed:
-            - !type:SnapToGrid { }
+            - !type:SnapToGrid {}
           conditions:
-            - !type:EntityAnchored { }
+            - !type:EntityAnchored {}
           steps:
             - material: Plasteel
-              amount: 2
+              amount: 1
+              doAfter: 1
+
+        - to: reinforcedHiddenDoor
+          completed:
+            - !type:SnapToGrid {}
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - tool: Anchoring
+              doAfter: 2
+            - material: Plasteel
+              amount: 1
               doAfter: 1
 
         - to: girder
           completed:
-            - !type:SnapToGrid { }
-          conditions:
-            - !type:EntityAnchored { }
+            - !type:SnapToGrid {}
           steps:
             - tool: Welding
               doAfter: 2
@@ -136,3 +159,24 @@
                   data: 0
             - tool: Cutting
               doAfter: 1
+
+    - node: hiddenDoor
+      entity: hidden_door
+      edges:
+        - to: girder
+          steps:
+            - tool: Screwing
+              doAfter: 1
+            - tool: Welding
+              doAfter: 1
+            - tool: Screwing
+              doAfter: 1
+
+    - node: reinforcedHiddenDoor
+      entity: reinforced_hidden_door
+      edges:
+        - to: reinforcedGirder
+          steps:
+            - tool: Screwing
+              doAfter: 1
+              #FIXME: Add full recipe here: https://tgstation13.org/wiki/Construction#Normal.2FReinforced_Hidden_Door

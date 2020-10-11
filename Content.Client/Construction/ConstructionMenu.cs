@@ -294,7 +294,7 @@ namespace Content.Client.Construction
                 {
                     _stepList.AddItem(isItem
                         ? Loc.GetString($"{stepNumber++}. To craft this item, you need:")
-                        : Loc.GetString($"{stepNumber++}. To build this, first you need:"));
+                        : Loc.GetString($"{stepNumber++}. To build this, you will need:"));
                 }
 
                 foreach (var step in edge.Steps)

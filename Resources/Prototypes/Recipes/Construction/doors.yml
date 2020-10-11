@@ -1,0 +1,27 @@
+﻿- type: construction
+  name: hidden door
+  id: hiddenDoor
+  graph: girder
+  startNode: start
+  targetNode: hiddenDoor
+  category: Structures
+  description: Keeps the air in and the greytide out.
+  icon:
+    sprite: Constructible/Structures/Walls/solid.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: reinforced hidden door
+  id: reinforcedHiddenDoor
+  graph: girder
+  startNode: start
+  targetNode: reinforcedHiddenDoor
+  category: Structures
+  description: Keeps the air in and the greytide out.
+  icon:
+    sprite: Constructible/Structures/Walls/solid.rsi
+    state: rgeneric
+  objectType: Structure
+  placementMode: SnapgridCenter
